@@ -1,0 +1,7 @@
+streamlit
+pymupdf
+pillow
+python-dotenv
+base64
+speechrecognition
+google-generativeai
