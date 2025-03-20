@@ -743,16 +743,7 @@ def display_pdf(pdf_bytes):
     base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
     st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}#toolbar=0" width="700" height="500"></iframe>', unsafe_allow_html=True)
 
-def speech_to_text():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.info("🎙️ Listening... Speak now!")
-        recognizer.adjust_for_ambient_noise(source, duration=1)
-        try:
-            audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)
-            return recognizer.recognize_google(audio)
-        except:
-            return ""
+
 
 st.sidebar.title("📌 Navigation")
 st.sidebar.radio("Go to:", ["🔍 Upload PDF"])
@@ -772,11 +763,7 @@ if uploaded_file:
     
     st.subheader("💬 Ask a Question")
     
-    if st.button("🎤 Start Listening"):
-        spoken_text = speech_to_text()
-        if spoken_text:
-            st.session_state.user_prompt = spoken_text
-            st.write("📝 You said:", spoken_text)
+
     
     user_prompt = st.text_input("Enter your question:", "", key="prompt-input")
     
