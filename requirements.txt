@@ -2,6 +2,6 @@ streamlit
 pymupdf
 pillow
 python-dotenv
-
+pyaudio
 speechrecognition
 google-generativeai
